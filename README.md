@@ -1,3 +1,12 @@
+# SaveTheRims Frontend
+## About Project:
+Web App that lets a user record markers in the integrated google map of where potholes exist on the road and shows the collection
+
+### Github
+[Github repo link:](https://github.com/asaganda/savetherims_frontend)
+### Heroku Deployed
+[Heroku api live link:](https://savetherims-backend.herokuapp.com/coord) Replace this with actual link
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
