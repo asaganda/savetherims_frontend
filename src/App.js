@@ -3,7 +3,9 @@ import axios from 'axios'
 import './App.css'
 
 const App = () => {
+  // States
   const [coords, setCoords] = useState([])
+  // const [singleCoord, setSingleCoord] = useState({ lat: 0, lng: 0})
 
   // variables
   const baseURL = 'https://savetherims-backend.herokuapp.com/coord'
@@ -11,9 +13,15 @@ const App = () => {
   // Functions
   const geolocate = () => {
     navigator.geolocation.getCurrentPosition((pos) => {
-      console.log(pos.coords.latitude, pos.coords.longitude);
+      const coords = {
+        lat: pos.coords.latitude, 
+        lng: pos.coords.longitude 
+      }
+      console.log(coords)
+      handleCreate(coords)
     });
   }
+
   const handleGeolocate = () => {
     geolocate()
   }
@@ -72,7 +80,7 @@ const App = () => {
     <>
       <h1>SaveTheRims</h1>
       <button onClick={() => handleGeolocate()}>Submit</button>
-      <button onClick={() => getCoords()}>Get all records</button>
+      <button onClick={() => getCoords()}>I will setup for list to switch page</button>
       {coords.map(coord => {
         return(
           <div key={coord._id}>
