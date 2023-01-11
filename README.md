@@ -5,7 +5,7 @@ Web App that lets a user record markers in the integrated google map of where po
 ### Github
 [Github repo link:](https://github.com/asaganda/savetherims_frontend)
 ### Heroku Deployed
-[Heroku api live link:](https://savetherims-backend.herokuapp.com/coord) Replace this with actual link
+[Heroku api live link:](https://savetherims-frontend.herokuapp.com/)
 
 # Getting Started with Create React App
 
