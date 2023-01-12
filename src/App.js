@@ -1,6 +1,10 @@
 import { useState, useEffect} from 'react'
 import axios from 'axios'
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import List from './pages/List'
+import Map from './pages/Map'
+import Home from './pages/Home'
 
 const App = () => {
   // States
@@ -77,18 +81,20 @@ const App = () => {
   }, [])
 
   return(
-    <>
-      <h1>SaveTheRims</h1>
-      <button onClick={() => handleGeolocate()}>Submit</button>
-      <button onClick={() => getCoords()}>I will setup for list to switch page</button>
-      {coords.map(coord => {
+    <Router>
+      {/* {coords.map(coord => {
         return(
           <div key={coord._id}>
             <p>latitude: {coord.lat}, longitude: {coord.lng}</p>
           </div>
         )
-      })}
-    </>
+      })} */}
+      <Routes>
+        <Route path="/" element={<Home handleGeolocate={handleGeolocate}/>}></Route>
+        <Route path="/list" element={<List />}></Route>
+        <Route path="/map" element={<Map />}></Route>
+      </Routes>
+    </Router>
   )
 }
 
