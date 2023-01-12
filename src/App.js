@@ -53,7 +53,7 @@ const App = () => {
 
   // Delete a coord
   const handleDelete = (deletedCoord) => {
-    axios.delete(baseURL + deletedCoord._id)
+    axios.delete(baseURL + "/" + deletedCoord._id)
     .then((res) => {
       
       let newCoords = coords.filter(coord => {
@@ -82,16 +82,10 @@ const App = () => {
 
   return(
     <Router>
-      {/* {coords.map(coord => {
-        return(
-          <div key={coord._id}>
-            <p>latitude: {coord.lat}, longitude: {coord.lng}</p>
-          </div>
-        )
-      })} */}
+      
       <Routes>
         <Route path="/" element={<Home handleGeolocate={handleGeolocate}/>}></Route>
-        <Route path="/list" element={<List />}></Route>
+        <Route path="/list" element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
         <Route path="/map" element={<Map />}></Route>
       </Routes>
     </Router>
