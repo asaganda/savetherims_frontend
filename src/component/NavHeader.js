@@ -3,7 +3,10 @@ import { Link, Outlet } from "react-router-dom"
 const NavHeader = () => {
     return(
         <>
-            <Link to="/"><button>Back</button></Link>
+            <header>
+                <h2>SaveTheRims</h2>
+                <Link to="/"><button>Home</button></Link>
+            </header>
             <Outlet />
         </>
     )
