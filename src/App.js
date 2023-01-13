@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Header from './component/Header'
 import NavHeader from './component/NavHeader'
 import EachCoordDetail from './component/EachCoordDetail'
+import NotFound from './pages/NotFound'
 
 const App = () => {
   // States
@@ -102,6 +103,7 @@ const App = () => {
               <Route path=":id" element={<EachCoordDetail coords={coords}/> }></Route>
             </Route>
             <Route path="/map" element={<Map />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>
     </BrowserRouter>
