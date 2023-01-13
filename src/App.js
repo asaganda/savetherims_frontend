@@ -7,6 +7,7 @@ import Map from './pages/Map'
 import Home from './pages/Home'
 import Header from './component/Header'
 import NavHeader from './component/NavHeader'
+import EachCoordDetail from './component/EachCoordDetail'
 
 const App = () => {
   // States
@@ -86,15 +87,20 @@ const App = () => {
     <BrowserRouter>
       <header>
         <Routes>
-          <Route path="/" element={<Header/>}></Route>
-          <Route path="/list" element={<NavHeader/>}></Route>
+          <Route index element={<Header/>}></Route>
+          <Route path="/list" element={<NavHeader/>}>
+            <Route path=":id" ></Route>
+          </Route>
           <Route path="/map" element={<NavHeader/>}></Route>
         </Routes>
       </header>
       <main>
         <Routes>
             <Route index element={<Home handleGeolocate={handleGeolocate}/>}></Route>
-            <Route path="/list" element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
+            <Route path="/list">
+              <Route index element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
+              <Route path=":id" element={<EachCoordDetail coords={coords}/> }></Route>
+            </Route>
             <Route path="/map" element={<Map />}></Route>
         </Routes>
       </main>
