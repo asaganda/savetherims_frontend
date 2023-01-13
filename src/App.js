@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react'
 import axios from 'axios'
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import List from './pages/List'
 import Map from './pages/Map'
 import Home from './pages/Home'
@@ -83,17 +83,22 @@ const App = () => {
   }, [])
 
   return(
-    <Routes>
-      <Route path="/" element={<Header />}>
-        <Route index element={<Home handleGeolocate={handleGeolocate}/>}></Route>
-      </Route>
-      <Route path="/list" element={<NavHeader/>}>
-        <Route index element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
-      </Route>
-      <Route path="/map" element={<NavHeader/>}>
-        <Route index element={<Map />}></Route>
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <header>
+        <Routes>
+          <Route path="/" element={<Header/>}></Route>
+          <Route path="/list" element={<NavHeader/>}></Route>
+          <Route path="/map" element={<NavHeader/>}></Route>
+        </Routes>
+      </header>
+      <main>
+        <Routes>
+            <Route index element={<Home handleGeolocate={handleGeolocate}/>}></Route>
+            <Route path="/list" element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
+            <Route path="/map" element={<Map />}></Route>
+        </Routes>
+      </main>
+    </BrowserRouter>
   )
 }
 

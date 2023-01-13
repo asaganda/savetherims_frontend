@@ -16,7 +16,7 @@ const EachCoord = (props) => {
                     <p>ID: {coord._id}</p>
                     <p>latitude: {coord.lat}, longitude: {coord.lng}</p>
                     <button onClick={() => deleteCoord(coord)}>Delete</button>
-                    <button>Edit</button>
+                    <button>Update</button>
                 </div>
                 )
             })}
