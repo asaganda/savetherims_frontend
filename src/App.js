@@ -1,10 +1,12 @@
 import { useState, useEffect} from 'react'
 import axios from 'axios'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import List from './pages/List'
 import Map from './pages/Map'
 import Home from './pages/Home'
+import Header from './component/Header'
+import NavHeader from './component/NavHeader'
 
 const App = () => {
   // States
@@ -81,14 +83,17 @@ const App = () => {
   }, [])
 
   return(
-    <Router>
-      
-      <Routes>
-        <Route path="/" element={<Home handleGeolocate={handleGeolocate}/>}></Route>
-        <Route path="/list" element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
-        <Route path="/map" element={<Map />}></Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Header />}>
+        <Route index element={<Home handleGeolocate={handleGeolocate}/>}></Route>
+      </Route>
+      <Route path="/list" element={<NavHeader/>}>
+        <Route index element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
+      </Route>
+      <Route path="/map" element={<NavHeader/>}>
+        <Route index element={<Map />}></Route>
+      </Route>
+    </Routes>
   )
 }
 
