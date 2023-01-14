@@ -22,7 +22,7 @@ const List = (props) => {
                         <p>latitude: {coord.lat}, longitude: {coord.lng}</p>
                     </Link>
                     <button onClick={() => deleteCoord(coord)}>Delete</button>
-                    <button>Update</button>
+                    <Link to={`/list/${coord._id}/edit`}><button>Edit</button></Link>
                 </div>
                 )
             })}

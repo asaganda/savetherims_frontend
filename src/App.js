@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Header from './component/Header'
 import NavHeader from './component/NavHeader'
 import EachCoordDetail from './component/EachCoordDetail'
+import EachCoordEdit from './component/EachCoordEdit'
 import NotFound from './pages/NotFound'
 
 const App = () => {
@@ -91,6 +92,7 @@ const App = () => {
           <Route index element={<Header/>}></Route>
           <Route path="/list" element={<NavHeader/>}>
             <Route path=":id" ></Route>
+            <Route path=":id/edit" ></Route>
           </Route>
           <Route path="/map" element={<NavHeader/>}></Route>
         </Routes>
@@ -100,7 +102,8 @@ const App = () => {
             <Route index element={<Home handleGeolocate={handleGeolocate}/>}></Route>
             <Route path="/list">
               <Route index element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
-              <Route path=":id" element={<EachCoordDetail coords={coords}/> }></Route>
+              <Route path=":id" element={<EachCoordDetail coords={coords}/>}></Route>
+              <Route path=":id/edit" element={<EachCoordEdit coords={coords}/>}></Route>
             </Route>
             <Route path="/map" element={<Map />}></Route>
             <Route path="*" element={<NotFound />}></Route>
