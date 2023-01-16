@@ -88,11 +88,21 @@ const App = () => {
     console.log(updatedCoord)
     axios.put(baseURL + "/" + updatedCoord._id, updatedCoord)
     .then((res) => {
-      console.log(res.data)
-
+      // if (updatedCoord.fixed === false) {
+      //   updatedCoord.fixed = "false"
+      // } else if (updatedCoord.fixed === true) {
+      //   updatedCoord.fixed = "true"
+      // } else {
+      //   console.log(`i should not see this`)
+      // }
+      (updatedCoord.fixed === false) ? updatedCoord.fixed = "false" : updatedCoord.fixed = "true"
+      console.log(`out of db into front end state`)
+      console.log(updatedCoord)
       let newCoords = coords.map(coord => {
         return coord._id !== updatedCoord._id ? coord : updatedCoord
       })
+      console.log('should see coords array state below')
+      console.log(newCoords)
       setCoords(newCoords)
     })
   }
@@ -118,7 +128,7 @@ const App = () => {
             <Route index element={<Home handleGeolocate={handleGeolocate}/>}></Route>
             <Route path="/list">
               <Route index element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
-              <Route path=":id" element={<EachCoordDetail coords={coords}/>}></Route>
+              <Route path=":id" element={<EachCoordDetail coords={coords} handleDelete={handleDelete}/>}></Route>
               <Route path=":id/edit" element={<EachCoordEdit coords={coords} handleEdit={handleEdit}/>}></Route>
             </Route>
             <Route path="/map" element={<Map />}></Route>
