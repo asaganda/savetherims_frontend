@@ -22,6 +22,7 @@ const EachCoordDetail = (props) => {
             <p>Coord id: {coord._id}</p>
             <p>Coord latitude: {coord.lat}</p>
             <p>Coord longitude: {coord.lng}</p>
+            <p>Coord Fixed: {coord.fixed === "false" ? "No" : "Yes"}</p>
         </>
     )
 }
