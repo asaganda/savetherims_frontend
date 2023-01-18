@@ -131,7 +131,7 @@ const App = () => {
               <Route path=":id" element={<EachCoordDetail coords={coords} handleDelete={handleDelete}/>}></Route>
               <Route path=":id/edit" element={<EachCoordEdit coords={coords} handleEdit={handleEdit}/>}></Route>
             </Route>
-            <Route path="/map" element={<Map />}></Route>
+            <Route path="/map" element={<Map coords={coords}/>}></Route>
             <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>

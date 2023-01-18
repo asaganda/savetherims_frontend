@@ -1,10 +1,58 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 
-const Map = () => {
+const mapContainerStyle = {
+    width: "100vw",
+    height: "50vh",
+}
+const center = {
+    lat: 41.0334663,
+    lng: -74.0441364,
+}
+const options = {
+    disableDefaultUI: true,
+    zoomControl: true,
+}
+const Map = (props) => {
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    })
+    const [selectedCoord, setSelectedCoord] = useState(null)
+    
+    if (loadError) return <div>Error loading maps</div>
+    if (!isLoaded) return <div>Loading Maps...</div>
+
     return(
         <>
             {/* <Link to="/"><button>Back to Home</button></Link> */}
             <h2>Where google map will go</h2>
+            <div style={{ width: "100vw", height: "300px" }}>
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle} 
+                    zoom={8}
+                    center={center}
+                    options={options}>
+                    {props.coords.map((coord) => (
+                        <Marker 
+                            key={coord._id} 
+                            position={{ lat: coord.lat, lng: coord.lng}}
+                            onClick={() => setSelectedCoord(coord)}
+                        />
+                    ))}
+                    {selectedCoord? (
+                    <InfoWindow 
+                        position={{lat: selectedCoord.lat, lng: selectedCoord.lng}}
+                        onCloseClick={() => setSelectedCoord(null)}
+                    >
+                        <div>
+                            <h2>Pothole!</h2>
+                            <p>{selectedCoord._id}</p>
+                        </div>
+                    </InfoWindow>
+                    ) : null}
+                </GoogleMap>
+            </div>
         </>
     )
 }
