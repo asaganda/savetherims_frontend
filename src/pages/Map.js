@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GoogleMap, useLoadScript, MarkerF, InfoWindowF } from '@react-google-maps/api'
 
+const divContainerMapSize = {
+    width: "100vw"
+}
 const mapContainerStyle = {
     width: "100vw",
     height: "50vh",
@@ -27,7 +30,7 @@ const Map = (props) => {
         <>
             {/* <Link to="/"><button>Back to Home</button></Link> */}
             <h2>Where google map will go</h2>
-            <div style={{ width: "100vw", height: "300px" }}>
+            <div style={divContainerMapSize}>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle} 
                     zoom={8}
@@ -48,11 +51,22 @@ const Map = (props) => {
                     >
                         <div>
                             <h2>Pothole!</h2>
-                            <p>{selectedCoord._id}</p>
+                            <p>View below for details</p>
                         </div>
                     </InfoWindowF>
                     ) : null}
                 </GoogleMap>
+                <div>
+                    {selectedCoord ? (
+                        <div>
+                            <h3>Pothole logged at</h3>
+                            <p>Latitude: {selectedCoord.lat}</p>
+                            <p>Longitude: {selectedCoord.lng}</p>
+                            <p>Fixed: {selectedCoord.fixed ? "No" : "Yes"}</p>
+                        </div>
+                    ) : <p>Select marker on map to view more details</p>}
+                    {/* italicize the p tag above */}
+                </div>
             </div>
         </>
     )
