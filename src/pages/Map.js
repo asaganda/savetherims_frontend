@@ -33,7 +33,7 @@ const Map = (props) => {
             <div style={divContainerMapSize}>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle} 
-                    zoom={8}
+                    zoom={9}
                     center={center}
                     options={options}>
                     {props.coords.map((coord) => (
