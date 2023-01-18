@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api'
+import { GoogleMap, useLoadScript, MarkerF, InfoWindow } from '@react-google-maps/api'
 
 const mapContainerStyle = {
     width: "100vw",
@@ -34,7 +34,7 @@ const Map = (props) => {
                     center={center}
                     options={options}>
                     {props.coords.map((coord) => (
-                        <Marker 
+                        <MarkerF 
                             key={coord._id} 
                             position={{ lat: coord.lat, lng: coord.lng}}
                             onClick={() => setSelectedCoord(coord)}
