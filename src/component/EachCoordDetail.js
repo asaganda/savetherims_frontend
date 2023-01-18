@@ -25,7 +25,7 @@ const EachCoordDetail = (props) => {
 
     return(
         <>
-            <Link to="/list">Back to List</Link>
+            <Link to="/list"><button>Back to List</button></Link>
             <h2>Full Coord Detail</h2>
             <p>Coord id: {coord._id}</p>
             <p>Coord latitude: {coord.lat}</p>
