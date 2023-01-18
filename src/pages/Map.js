@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GoogleMap, useLoadScript, MarkerF, InfoWindow } from '@react-google-maps/api'
+import { GoogleMap, useLoadScript, MarkerF, InfoWindowF } from '@react-google-maps/api'
 
 const mapContainerStyle = {
     width: "100vw",
@@ -41,15 +41,16 @@ const Map = (props) => {
                         />
                     ))}
                     {selectedCoord? (
-                    <InfoWindow 
+                    <InfoWindowF 
                         position={{lat: selectedCoord.lat, lng: selectedCoord.lng}}
                         onCloseClick={() => setSelectedCoord(null)}
+                        options={{ pixelOffset: new window.google.maps.Size(0, -30) }}
                     >
                         <div>
                             <h2>Pothole!</h2>
                             <p>{selectedCoord._id}</p>
                         </div>
-                    </InfoWindow>
+                    </InfoWindowF>
                     ) : null}
                 </GoogleMap>
             </div>
