@@ -28,8 +28,6 @@ const Map = (props) => {
 
     return(
         <>
-            {/* <Link to="/"><button>Back to Home</button></Link> */}
-            <h2>Where google map will go</h2>
             <div style={divContainerMapSize}>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle} 
