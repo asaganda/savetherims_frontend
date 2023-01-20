@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 const Header = () => {
     return(
         <>
-            <h2>SaveTheRims</h2>
+            <h1 className="inline bg-orange-500">SaveTheRims</h1>
             <Outlet/>
         </>
     )

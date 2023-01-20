@@ -120,7 +120,7 @@ const App = () => {
 
   return(
     <BrowserRouter>
-      <header>
+      <header className="text-center">
         <Routes>
           <Route index element={<Header/>}></Route>
           <Route path="/list" element={<NavHeader/>}>
