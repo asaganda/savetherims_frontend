@@ -10,23 +10,23 @@ const List = (props) => {
     }
 
     return(
-        <>
-            {/* <Link to="/"><button>Back to Home</button></Link> */}
-            <h2>List of records</h2>
+        <div className="p-4">
+            <h2 className="font-sans font-bold border-b border-[#ee6c4d] w-full">List of records</h2>
             {props.coords.map(coord => {
                 return(
-                <div key={coord._id}>
+                <div key={coord._id} className="bg-[#e0fbfc] border my-5 rounded-lg px-5 py-4 font-sans">
                     <Link to={`/list/${coord._id}`}>
-                        <h4>Each coord record</h4>
                         <p>ID: {coord._id}</p>
                         <p>latitude: {coord.lat}, longitude: {coord.lng}</p>
                     </Link>
-                    <button onClick={() => deleteCoord(coord)}>Delete</button>
-                    <Link to={`/list/${coord._id}/edit`}><button>Edit</button></Link>
+                    <div className="flex justify-end mt-3">
+                        <button onClick={() => deleteCoord(coord)} className="bg-[#f73b0c] py-2 px-4 rounded-2xl text-black">Delete</button>
+                        <Link to={`/list/${coord._id}/edit`}><button className="border-[#188386] border-2 py-2 px-4 rounded-2xl text-black ml-4">Edit</button></Link>
+                    </div>
                 </div>
                 )
             })}
-        </>
+        </div>
     )
 }
 
