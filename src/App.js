@@ -120,7 +120,7 @@ const App = () => {
 
   return(
     <BrowserRouter>
-      <header className="sticky text-center py-6 bg-[#ee6c4d] w-screen">
+      <header className="sticky text-center w-screen">
         <Routes>
           <Route index element={<Header/>}></Route>
           <Route path="/list" element={<NavHeader/>}>
