@@ -17,10 +17,12 @@ const List = (props) => {
                 <div key={coord._id} className="bg-[#e0fbfc] border my-5 rounded-lg px-5 py-4 font-sans">
                     <Link to={`/list/${coord._id}`}>
                         <p>ID: {coord._id}</p>
-                        <p>latitude: {coord.lat}, longitude: {coord.lng}</p>
+                        <p>Latitude: {coord.lat}</p>
+                        <p>Longitude: {coord.lng}</p>
                     </Link>
                     <div className="flex justify-end mt-3">
-                        <button onClick={() => deleteCoord(coord)} className="bg-[#f73b0c] py-2 px-4 rounded-2xl text-black">Delete</button>
+                        <Link to={`/list/${coord._id}`}><button className="bg-emerald-800 py-2 px-4 rounded-2xl text-white h-full">Details</button></Link>
+                        <button onClick={() => deleteCoord(coord)} className="bg-[#f73b0c] py-2 px-4 rounded-2xl text-black ml-4">Delete</button>
                         <Link to={`/list/${coord._id}/edit`}><button className="border-[#188386] border-2 py-2 px-4 rounded-2xl text-black ml-4">Edit</button></Link>
                     </div>
                 </div>

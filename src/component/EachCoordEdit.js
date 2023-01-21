@@ -47,8 +47,8 @@ const EachCoordEdit = (props) => {
             <div className="bg-[#e0fbfc] px-5 py-4 rounded-lg">
                 <p className="border-b border-black w-10/12">ID: {coord._id}</p>
                 <div className="flex flex-col">
-                    <p className="border-b border-black w-10/12">latitude: {coord.lat}</p>
-                    <p className="border-b border-black w-10/12">longitude: {coord.lng}</p>
+                    <p className="border-b border-black w-10/12">Latitude: {coord.lat}</p>
+                    <p className="border-b border-black w-10/12">Longitude: {coord.lng}</p>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
