@@ -3,8 +3,17 @@ import { Link } from 'react-router-dom'
 const Home = (props) => {
     return(
         <>
-            {props.submitStatus && <h3>Recording location..</h3>}
-            {props.recordSuccess && <h3>Success</h3>}
+            {props.submitStatus && 
+            <div className="w-full flex justify-center">
+                <div className="absolute top-24 bg-green-200 w-11/12 py-4 rounded-xl text-center text-3xl">Recording location...</div>
+            </div>
+            }
+            {props.recordSuccess && 
+            <div className="w-full flex justify-center">
+                <div className="absolute top-24 bg-green-700 w-11/12 py-4 rounded-xl text-center text-3xl">Success</div>
+            </div>
+            }
+            
             <div className="h-full flex items-center justify-center">
                 <button className="bg-[#ee6c4d] p-14 rounded-full text-black font-bold tracking-widest" onClick={() => props.handleGeolocate()}>Submit</button>
             </div>
