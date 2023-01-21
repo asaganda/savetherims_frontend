@@ -28,8 +28,6 @@ const Map = (props) => {
 
     return(
         <>
-            {/* <Link to="/"><button>Back to Home</button></Link> */}
-            <h2>Where google map will go</h2>
             <div style={divContainerMapSize}>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle} 
@@ -56,16 +54,15 @@ const Map = (props) => {
                     </InfoWindowF>
                     ) : null}
                 </GoogleMap>
-                <div>
+                <div className="p-4">
                     {selectedCoord ? (
-                        <div>
-                            <h3>Pothole logged at</h3>
-                            <p>Latitude: {selectedCoord.lat}</p>
-                            <p>Longitude: {selectedCoord.lng}</p>
+                        <div className="bg-[#e0fbfc] px-5 py-4 rounded-lg font-sans">
+                            <h3 className="font-bold border-b border-black w-10/12">Pothole logged at</h3>
+                            <p className="border-b border-black w-10/12">Latitude: {selectedCoord.lat}</p>
+                            <p className="border-b border-black w-10/12">Longitude: {selectedCoord.lng}</p>
                             <p>Fixed: {selectedCoord.fixed ? "No" : "Yes"}</p>
                         </div>
-                    ) : <p>Select marker on map to view more details</p>}
-                    {/* italicize the p tag above */}
+                    ) : <p className="italic text-center">Select marker on map to view more details</p>}
                 </div>
             </div>
         </>

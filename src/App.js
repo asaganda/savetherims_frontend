@@ -14,7 +14,8 @@ import NotFound from './pages/NotFound'
 const App = () => {
   // States
   const [coords, setCoords] = useState([])
-  // const [singleCoord, setSingleCoord] = useState({ lat: 0, lng: 0})
+  const [submitStatus, setSubmitStatus] = useState(false)
+  const [recordSuccess, setRecordSuccess] = useState(false)
 
   // variables
   const baseURL = 'https://savetherims-backend.herokuapp.com/coord'
@@ -29,10 +30,16 @@ const App = () => {
       }
       console.log(coords)
       handleCreate(coords)
+      setSubmitStatus(false)
+      setRecordSuccess(true)
+      setTimeout(() => {
+        setRecordSuccess(false)
+      }, 2000);
     });
   }
 
   const handleGeolocate = () => {
+    setSubmitStatus(true)
     geolocate()
   }
 
@@ -113,7 +120,7 @@ const App = () => {
 
   return(
     <BrowserRouter>
-      <header>
+      <header className="sticky text-center w-screen">
         <Routes>
           <Route index element={<Header/>}></Route>
           <Route path="/list" element={<NavHeader/>}>
@@ -123,9 +130,9 @@ const App = () => {
           <Route path="/map" element={<NavHeader/>}></Route>
         </Routes>
       </header>
-      <main>
+      <main className="h-[700px]">
         <Routes>
-            <Route index element={<Home handleGeolocate={handleGeolocate}/>}></Route>
+            <Route index element={<Home handleGeolocate={handleGeolocate} submitStatus={submitStatus} recordSuccess={recordSuccess}/>}></Route>
             <Route path="/list">
               <Route index element={<List coords={coords} handleDelete={handleDelete}/>}></Route>
               <Route path=":id" element={<EachCoordDetail coords={coords} handleDelete={handleDelete}/>}></Route>

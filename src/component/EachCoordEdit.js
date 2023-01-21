@@ -40,35 +40,32 @@ const EachCoordEdit = (props) => {
     }, [])
 
     return(
-        <>
-            <button onClick={() => backToRecord()}>Back to List</button>
-            <h1>Each Cord Edit Form</h1>
-            <p>ID: {coord._id}</p>
-            <p>lat: {coord.lat}</p>
-            <p>long: {coord.lng}</p>
-            <p>{coord.fixed}</p>
-            <form onSubmit={handleSubmit}>
-                {/* <label>
-                    Latitude: <input name="lat"/>
-                </label>
-                <br />
-                <label>
-                    Longitude: <input name="lng"/>
-                </label> */}
-                <div>
-                    <span>Fixed?</span>
-                    <label>
-                        <input type="radio" value="true" name="fixed" checked={coord.fixed === "true"} onChange={handleFixed}/>
-                        Yes
-                    </label>
-                    <label>
-                        <input type="radio" value="false" name="fixed" checked={coord.fixed === "false"} onChange={handleFixed}/>
-                        No
-                    </label>
+        <div className="px-4 pb-4">
+            <div className="flex justify-center">
+                <button onClick={() => backToRecord()} className="bg-[#ee6c4d] px-4 py-2 text-black font-bold tracking-widest rounded-2xl w-3/6 mb-4">Back to List</button>
+            </div>
+            <div className="bg-[#e0fbfc] px-5 py-4 rounded-lg">
+                <p className="border-b border-black w-10/12">ID: {coord._id}</p>
+                <div className="flex flex-col">
+                    <p className="border-b border-black w-10/12">Latitude: {coord.lat}</p>
+                    <p className="border-b border-black w-10/12">Longitude: {coord.lng}</p>
                 </div>
-                <input type="submit" value="Update"/>
-            </form>
-        </>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <span className="mr-8">Fixed?</span>
+                        <label>
+                            <input type="radio" value="true" name="fixed" checked={coord.fixed === "true"} onChange={handleFixed}/>
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" value="false" name="fixed" checked={coord.fixed === "false"} onChange={handleFixed}/>
+                            No
+                        </label>
+                    </div>
+                    <input className="border-2 border-green-800 px-4 py-2 rounded-2xl" type="submit" value="Update"/>
+                </form>
+            </div>
+        </div>
     )
 }
 
