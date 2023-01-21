@@ -120,7 +120,7 @@ const App = () => {
 
   return(
     <BrowserRouter>
-      <header>
+      <header className="sticky text-center w-screen">
         <Routes>
           <Route index element={<Header/>}></Route>
           <Route path="/list" element={<NavHeader/>}>
@@ -130,7 +130,7 @@ const App = () => {
           <Route path="/map" element={<NavHeader/>}></Route>
         </Routes>
       </header>
-      <main>
+      <main className="h-[700px]">
         <Routes>
             <Route index element={<Home handleGeolocate={handleGeolocate} submitStatus={submitStatus} recordSuccess={recordSuccess}/>}></Route>
             <Route path="/list">

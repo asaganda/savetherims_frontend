@@ -1,10 +1,16 @@
 import { Link, Outlet } from "react-router-dom"
+import TailwindHeaderBrand from "./TailwindHeaderBrand"
+import TailwindHomeBtn from "./TailwindHomeBtn"
 
 const NavHeader = () => {
     return(
         <>
-            <h2>SaveTheRims</h2>
-            <Link to="/"><button>Home</button></Link>
+            <TailwindHeaderBrand>
+                SaveTheRims
+            </TailwindHeaderBrand>
+            <Link to="/">
+                <TailwindHomeBtn>Home</TailwindHomeBtn>
+            </Link>
             <Outlet />
         </>
     )
