@@ -11,7 +11,7 @@ const List = (props) => {
 
     return(
         <div className="p-4">
-            <h2 className="font-sans font-bold border-b border-[#ee6c4d] w-full">List of records</h2>
+            <h2 className="font-sans font-bold border-b border-brand_orange w-full">List of records</h2>
             {props.coords.map(coord => {
                 return(
                 <div key={coord._id} className="bg-[#e0fbfc] border my-5 rounded-lg px-5 py-4 font-sans">

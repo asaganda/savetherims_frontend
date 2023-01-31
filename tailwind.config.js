@@ -6,9 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      color: {
+      colors: {
         light_gray: "#98c1d9",
-        cool_orange: "#ee6c4d",
+        brand_orange: "#ee6c4d",
       }
     },
   },
