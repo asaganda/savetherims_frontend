@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GoogleMap, useLoadScript, MarkerF, InfoWindowF } from '@react-google-maps/api'
 
@@ -19,30 +19,14 @@ const Map = (props) => {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     })
     const [selectedCoord, setSelectedCoord] = useState(null)
-    const [currentLocationMap, setCurrentLocationMap] = useState({})
 
     const center = {
-        lat: currentLocationMap.lat,
-        lng: currentLocationMap.lng,
+        lat: props.currentLocation.lat,
+        lng: props.currentLocation.lng,
     }
-    
-    const currentLatLng = () => {
-        navigator.geolocation.getCurrentPosition((pos) => {
-            const currentLocation = {
-                lat: pos.coords.latitude,
-                lng: pos.coords.longitude
-            }
-            console.log(currentLocation)
-            setCurrentLocationMap(currentLocation)
-        })
-    }
-
-    useEffect(() => {
-        currentLatLng()
-    }, [])
 
     if (loadError) return <div>Error loading maps</div>
-    if (!isLoaded) return <div>Loading Maps...</div>
+    if (!isLoaded || !center.lat) return <div>Loading Maps...</div>
 
     return(
         <>
