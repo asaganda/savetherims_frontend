@@ -16,12 +16,23 @@ const App = () => {
   const [coords, setCoords] = useState([])
   const [submitStatus, setSubmitStatus] = useState(false)
   const [recordSuccess, setRecordSuccess] = useState(false)
+  const [currentLocation, setCurrentLocation] = useState({})
 
   // variables
   const baseURL = 'https://savetherims-backend.herokuapp.com/coord'
   // const baseURL = 'http://localhost:3000/coord'
 
   // Functions
+  const getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const coordinates = {
+        lat: pos.coords.latitude, 
+        lng: pos.coords.longitude
+      }
+      setCurrentLocation(coordinates)
+    })
+  }
+
   const geolocate = () => {
     navigator.geolocation.getCurrentPosition((pos) => {
       const coords = {
@@ -116,6 +127,7 @@ const App = () => {
 
   useEffect(() => {
     getCoords()
+    getCurrentLocation()
   }, [])
 
   return(
@@ -138,7 +150,7 @@ const App = () => {
               <Route path=":id" element={<EachCoordDetail coords={coords} handleDelete={handleDelete}/>}></Route>
               <Route path=":id/edit" element={<EachCoordEdit coords={coords} handleEdit={handleEdit}/>}></Route>
             </Route>
-            <Route path="/map" element={<Map coords={coords}/>}></Route>
+            <Route path="/map" element={<Map coords={coords} currentLocation={currentLocation}/>}></Route>
             <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>

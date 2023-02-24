@@ -9,10 +9,7 @@ const mapContainerStyle = {
     width: "100vw",
     height: "50vh",
 }
-const center = {
-    lat: 41.0334663,
-    lng: -74.0441364,
-}
+
 const options = {
     disableDefaultUI: true,
     zoomControl: true,
@@ -22,9 +19,14 @@ const Map = (props) => {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     })
     const [selectedCoord, setSelectedCoord] = useState(null)
-    
+
+    const center = {
+        lat: props.currentLocation.lat,
+        lng: props.currentLocation.lng,
+    }
+
     if (loadError) return <div>Error loading maps</div>
-    if (!isLoaded) return <div>Loading Maps...</div>
+    if (!isLoaded || !center.lat) return <div>Loading Maps...</div>
 
     return(
         <>
