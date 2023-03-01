@@ -19,7 +19,7 @@ const EachCoordEdit = (props) => {
 
     const handleFixed = (event) => {
         console.log(`coord below is what should be changing:`)
-        setCoord({...coord, [event.target.name]: event.target.value})
+        setCoord({...coord, [event.target.name]: (event.target.value === "true") ? true : false })
         console.log(coord)
     }
 
