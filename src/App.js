@@ -59,13 +59,8 @@ const App = () => {
   const getCoords = () => {
     axios.get(baseURL)
     .then((res) => {
-      // console.log(res.data)
-      let newData = res.data.map(coord => {
-        (coord.fixed === false) ? coord.fixed = "false" : coord.fixed = "true"
-        return coord
-      })
-      console.log(newData)
-      setCoords(newData)
+      console.log(res.data)
+      setCoords(res.data)
     })
     .catch((error) => console.error(error))
   }
@@ -74,7 +69,7 @@ const App = () => {
   const handleCreate = (coordData) => {
     axios.post(baseURL, coordData)
     .then((res) => {
-      res.data.fixed = "false"
+      res.data.fixed = false
       console.log(res.data)
       let newCoords = [...coords, res.data]
       setCoords(newCoords)
@@ -95,31 +90,13 @@ const App = () => {
 
   // Edit/Update a coord
   const handleEdit = (updatedCoord) => {
-    if (updatedCoord.fixed === "false") {
-      updatedCoord.fixed = false
-    } else if (updatedCoord.fixed === "true") {
-      updatedCoord.fixed = true
-    } else {
-      console.log(`i should not see this`)
-    }
-    console.log(`updated coord info sending to db`)
     console.log(updatedCoord)
     axios.put(baseURL + "/" + updatedCoord._id, updatedCoord)
     .then((res) => {
-      // if (updatedCoord.fixed === false) {
-      //   updatedCoord.fixed = "false"
-      // } else if (updatedCoord.fixed === true) {
-      //   updatedCoord.fixed = "true"
-      // } else {
-      //   console.log(`i should not see this`)
-      // }
-      (updatedCoord.fixed === false) ? updatedCoord.fixed = "false" : updatedCoord.fixed = "true"
-      console.log(`out of db into front end state`)
       console.log(updatedCoord)
       let newCoords = coords.map(coord => {
         return coord._id !== updatedCoord._id ? coord : updatedCoord
       })
-      console.log('should see coords array state below')
       console.log(newCoords)
       setCoords(newCoords)
     })

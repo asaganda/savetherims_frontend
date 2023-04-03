@@ -41,6 +41,8 @@ const Map = (props) => {
                             key={coord._id} 
                             position={{ lat: coord.lat, lng: coord.lng}}
                             onClick={() => setSelectedCoord(coord)}
+                            icon={coord.fixed ? 
+                                { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" } : null }
                         />
                     ))}
                     {selectedCoord? (
@@ -62,7 +64,7 @@ const Map = (props) => {
                             <h3 className="font-bold border-b border-black w-10/12">Pothole logged at</h3>
                             <p className="border-b border-black w-10/12">Latitude: {selectedCoord.lat}</p>
                             <p className="border-b border-black w-10/12">Longitude: {selectedCoord.lng}</p>
-                            <p>Fixed: {selectedCoord.fixed ? "No" : "Yes"}</p>
+                            <p>Fixed: {selectedCoord.fixed ? "Yes" : "No"}</p>
                         </div>
                     ) : <p className="italic text-center">Select marker on map to view more details</p>}
                 </div>

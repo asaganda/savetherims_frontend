@@ -19,7 +19,7 @@ const EachCoordEdit = (props) => {
 
     const handleFixed = (event) => {
         console.log(`coord below is what should be changing:`)
-        setCoord({...coord, [event.target.name]: event.target.value})
+        setCoord({...coord, [event.target.name]: (event.target.value === "true") ? true : false })
         console.log(coord)
     }
 
@@ -54,11 +54,11 @@ const EachCoordEdit = (props) => {
                     <div className="mb-4">
                         <span className="mr-8">Fixed?</span>
                         <label>
-                            <input type="radio" value="true" name="fixed" checked={coord.fixed === "true"} onChange={handleFixed}/>
+                            <input type="radio" value="true" name="fixed" checked={coord.fixed === true} onChange={handleFixed}/>
                             Yes
                         </label>
                         <label>
-                            <input type="radio" value="false" name="fixed" checked={coord.fixed === "false"} onChange={handleFixed}/>
+                            <input type="radio" value="false" name="fixed" checked={coord.fixed === false} onChange={handleFixed}/>
                             No
                         </label>
                     </div>
