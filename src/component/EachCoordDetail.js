@@ -32,7 +32,7 @@ const EachCoordDetail = (props) => {
                 <p className="border-b border-black w-10/12">ID: {coord._id}</p>
                 <p className="border-b border-black w-10/12">Latitude: {coord.lat}</p>
                 <p className="border-b border-black w-10/12">Longitude: {coord.lng}</p>
-                <p>Fixed: {coord.fixed === "false" ? "No" : "Yes"}</p>
+                <p>Fixed: {coord.fixed === false ? "No" : "Yes"}</p>
                 <div className="flex justify-end mt-3">
                     <button onClick={() => deleteCoord(coord)} className="bg-[#f73b0c] py-2 px-4 rounded-2xl text-black ml-4">Delete</button>
                     <Link to={`/list/${coord._id}/edit`}><button className="border-[#188386] border-2 py-2 px-4 rounded-2xl text-black ml-4">Edit</button></Link>

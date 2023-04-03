@@ -9,10 +9,7 @@ const mapContainerStyle = {
     width: "100vw",
     height: "50vh",
 }
-const center = {
-    lat: 41.0334663,
-    lng: -74.0441364,
-}
+
 const options = {
     disableDefaultUI: true,
     zoomControl: true,
@@ -22,9 +19,14 @@ const Map = (props) => {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     })
     const [selectedCoord, setSelectedCoord] = useState(null)
-    
+
+    const center = {
+        lat: props.currentLocation.lat,
+        lng: props.currentLocation.lng,
+    }
+
     if (loadError) return <div>Error loading maps</div>
-    if (!isLoaded) return <div>Loading Maps...</div>
+    if (!isLoaded || !center.lat) return <div>Loading Maps...</div>
 
     return(
         <>
@@ -39,6 +41,8 @@ const Map = (props) => {
                             key={coord._id} 
                             position={{ lat: coord.lat, lng: coord.lng}}
                             onClick={() => setSelectedCoord(coord)}
+                            icon={coord.fixed ? 
+                                { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" } : null }
                         />
                     ))}
                     {selectedCoord? (
@@ -60,7 +64,7 @@ const Map = (props) => {
                             <h3 className="font-bold border-b border-black w-10/12">Pothole logged at</h3>
                             <p className="border-b border-black w-10/12">Latitude: {selectedCoord.lat}</p>
                             <p className="border-b border-black w-10/12">Longitude: {selectedCoord.lng}</p>
-                            <p>Fixed: {selectedCoord.fixed ? "No" : "Yes"}</p>
+                            <p>Fixed: {selectedCoord.fixed ? "Yes" : "No"}</p>
                         </div>
                     ) : <p className="italic text-center">Select marker on map to view more details</p>}
                 </div>
