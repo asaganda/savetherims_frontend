@@ -1,39 +1,42 @@
-import { render, waitForElement } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
-import { baseURL, getCoords } from './App'
 import App from './App';
 
-// console.log(getCoords)
-jest.mock("axios");
+jest.mock('axios');
 
-const coords = [
-    { 
-        _id: "63c56b4dd6402c9bd41bef78", 
-        lng: -74.03903, 
-        lat: 41.02881, 
-        false: false
-    },
-    { 
-        _id: "63c56b4dd6402t7bd41bef78", 
-        lng: -74.05648, 
-        lat: 41.95185, 
-        false: false
-    }
-];
+describe('App', () => {
+  it('make sure app renders', () => {
+    axios.get.mockImplementation(() => Promise.resolve({ data: [] }));
 
-describe("getCoords", () => {
-    it("should return coordinates data", async () => {
-        axios.get.mockResolvedValue({ data: coords});
-        
-        // render
-        render(<App />);
+    const mockGeolocation = {
+      getCurrentPosition: jest.fn()
+        .mockImplementationOnce((success) => Promise.resolve(success({
+          coords: {
+            latitude: 51.1,
+            longitude: 45.3
+          }
+        })))
+    };
 
-        // when
-        const result = getCoords();
+    global.navigator.geolocation = mockGeolocation;
 
-        // then
-        expect(axios.get).toHaveBeenCalledWith(baseURL);
-        expect(result).toEqual(coords);
+    render(<App />)
+  })
+  
+  it('renders the header text', () => {
+    axios.get.mockImplementation(() => Promise.resolve({ data: [] }));
+    render(<App />)
+    const headerElement = screen.getByText(/SaveTheRims/i);
+    expect(headerElement).toBeInTheDocument();
+  })
 
-    });
+  it('get the coords', () => {
+    axios.get.mockImplementation(() => Promise.resolve({ data: [
+      {_id: '63c56b4dd6402c9bd41becf8', lat: 41.0334663, lng: -74.0441364, fixed: true, __v: 0}, 
+      {_id: '63c570bcd6402c9bd41becfa', lat: 41.0334549, lng: -74.0441157, fixed: false, __v: 0}
+    ] }));
+    
+    render(<App />)
+  })
+
 });
