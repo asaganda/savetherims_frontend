@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Home from './Home';
 import { BrowserRouter } from 'react-router-dom';
 
