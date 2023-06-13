@@ -2,10 +2,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import Home from './Home';
 import { BrowserRouter } from 'react-router-dom';
 
-const MockHome = () => {
+const MockHome = ({ fn }) => {
     return (
         <BrowserRouter>
-            <Home />
+            <Home handleGeolocate={fn}/>
         </BrowserRouter>
     )
 }
@@ -18,7 +18,7 @@ it('renders the submit button', () => {
 
 it('clicking submit to record new pothole', () => {
     const mockedHandleGeolocate = jest.fn()
-    render(<MockHome handleGeolocate={mockedHandleGeolocate}/>)
+    render(<MockHome fn={mockedHandleGeolocate}/>)
     const submitBtn = screen.getByText('Submit')
     fireEvent.click(submitBtn);
     expect(mockedHandleGeolocate).toHaveBeenCalled()
