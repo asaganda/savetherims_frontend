@@ -45,8 +45,21 @@ const Map = (props) => {
                             key={coord._id} 
                             position={{ lat: coord.lat, lng: coord.lng}}
                             onClick={() => setSelectedCoord(coord)}
-                            icon={coord.fixed ? 
-                                { url: "https://maps.google.com/mapfiles/ms/micons/blue.png" } : null }
+                            icon={coord.fixed ?
+                                {
+                                    path: window.google.maps.SymbolPath.CIRCLE,
+                                    scale: 5,
+                                    strokeWeight: 6,
+                                    strokeColor: "green",
+                                } 
+                                : 
+                                {
+                                    path: window.google.maps.SymbolPath.CIRCLE,
+                                    scale: 5,
+                                    strokeWeight: 6,
+                                    strokeColor: "red"
+                                }
+                            }
                         />
                     ))}
                     {selectedCoord? (
