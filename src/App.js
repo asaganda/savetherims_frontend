@@ -10,6 +10,7 @@ import NavHeader from './component/NavHeader'
 import EachCoordDetail from './component/EachCoordDetail'
 import EachCoordEdit from './component/EachCoordEdit'
 import NotFound from './pages/NotFound'
+import Footer from './component/Footer'
 
 const App = () => {
   // States
@@ -131,6 +132,9 @@ const App = () => {
             <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </BrowserRouter>
   )
 }
