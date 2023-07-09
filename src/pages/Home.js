@@ -15,7 +15,7 @@ const Home = (props) => {
             }
             
             <div className="h-full flex items-center justify-center">
-                <button className="bg-brand_orange p-14 rounded-full text-black font-bold tracking-widest" onClick={() => props.handleGeolocate()}>Submit</button>
+                <button className="bg-brand_orange p-14 rounded-full text-black font-bold tracking-widest floating" onClick={() => props.handleGeolocate()}>Submit</button>
             </div>
             <div className="absolute bottom-0 mb-20 w-full flex justify-evenly">
                 {/* <p className="italic">Click one of the below options to view:</p> */}
