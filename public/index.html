@@ -28,7 +28,12 @@
   </head>
   <body class="bg-light_gray">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="no-desktop"></div>
+    <div class="no-desktop flex flex-col justify-center items-center">
+      <div class="container hidden sm:flex flex-col items-center w-[450px]">
+        <p class="text-brand_orange p-2 text-center text-xl">This app is best used on mobile view. Please scan QR code to launch on mobile device</p>
+        <img class="w-[200px]" src="./QRcodeSaveTheRims.png" alt="qr code to scan for mobile">
+      </div>
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.

@@ -54,7 +54,7 @@ body {
   100% { transform: scale(1); }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 640px) {
   .no-desktop {
     position: absolute; /* Sit on top of the page content */
     width: 100%;
