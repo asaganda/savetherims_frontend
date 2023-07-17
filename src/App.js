@@ -110,7 +110,7 @@ const App = () => {
 
   return(
     <BrowserRouter>
-      <header className="fixed text-center w-screen">
+      <header className="fixed text-center w-screen z-[2]">
         <Routes>
           <Route index element={<Header/>}></Route>
           <Route path="/list" element={<NavHeader/>}>
