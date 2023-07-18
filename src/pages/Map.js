@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { GoogleMap, useLoadScript, MarkerF, InfoWindowF } from '@react-google-maps/api'
 
 const divContainerMapSize = {
-    width: "100vw"
+    width: "100vw",
+    paddingTop: "10em"
 }
 const mapContainerStyle = {
     width: "100vw",
