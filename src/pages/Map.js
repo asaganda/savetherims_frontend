@@ -4,11 +4,12 @@ import { GoogleMap, useLoadScript, MarkerF, InfoWindowF } from '@react-google-ma
 
 const divContainerMapSize = {
     width: "100vw",
-    paddingTop: "10em"
+    top: "9em",
+    position: "fixed",
 }
 const mapContainerStyle = {
     width: "100vw",
-    height: "50vh",
+    height: "40vh",
 }
 
 const options = {
