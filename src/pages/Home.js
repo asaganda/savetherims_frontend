@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Home = (props) => {
     return(
-        <div className="home-container">
+        <div className="fixed top-60 w-full h-[45vh] flex flex-col justify-between">
             {props.submitStatus && 
             <div className="w-full flex justify-center">
                 <div className="absolute top-24 bg-green-200 w-11/12 py-4 rounded-xl text-center text-3xl">Recording location...</div>
