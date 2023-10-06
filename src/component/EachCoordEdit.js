@@ -40,7 +40,7 @@ const EachCoordEdit = (props) => {
     }, [])
 
     return(
-        <div className="px-4 pb-4">
+        <div className="px-4 pb-4 pt-36">
             <div className="flex justify-center">
                 <button onClick={() => backToRecord()} className="bg-brand_orange px-4 py-2 text-black font-bold tracking-widest rounded-2xl w-3/6 mb-4">Back to List</button>
             </div>

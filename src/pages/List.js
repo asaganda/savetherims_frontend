@@ -10,7 +10,7 @@ const List = (props) => {
     }
 
     return(
-        <div className="p-4">
+        <div className="p-4 pt-40 pb-12">
             <h2 className="font-sans font-bold border-b border-brand_orange w-full">List of records</h2>
             {props.coords.map(coord => {
                 return(
