@@ -18,7 +18,6 @@ const Home = (props) => {
                 <button className="bg-brand_orange p-14 rounded-full text-black font-bold tracking-widest floating" onClick={() => props.handleGeolocate()}>Submit</button>
             </div>
             <div className="w-full flex justify-evenly">
-                {/* <p className="italic">Click one of the below options to view:</p> */}
                 <Link to="/list"><button className="bg-brand_orange p-4 text-black font-bold tracking-widest rounded-l-2xl">View List</button></Link>
                 <Link to="/map"><button className="bg-brand_orange p-4 text-black font-bold tracking-widest rounded-r-2xl">View Map</button></Link>
             </div>
